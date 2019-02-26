@@ -1,0 +1,14 @@
+[Unit]
+Description=DHT Logger
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python -u sensor.py
+WorkingDirectory=/home/pi/drybox
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target
