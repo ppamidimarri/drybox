@@ -1,0 +1,79 @@
+<html>
+	<head>
+	<!-- Load the AJAX API -->
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript">
+		// Load the Visualization API and the table package.
+		google.charts.load('current', {'packages':['corechart']});
+
+		// Set a callback to run when the Google Visualization API is loaded.
+		google.charts.setOnLoadCallback(drawChart);
+
+		function drawChart() {
+			var jsonData = $.ajax({
+				url: "getTemperatureLineData.php",
+				dataType: "json",
+				async: false
+			}).responseText;
+
+			// Create our data table out of JSON data loaded from server.
+			var data = new google.visualization.DataTable(jsonData);
+
+			var options = {
+				chartArea: {
+					left: 0,
+					top: 0,
+					width: '100%',
+					height: '100%'
+				},
+				title: 'Temperature, \xB0F',
+				titlePosition: 'in',
+				titleTextStyle: {
+					fontSize: 18,
+					bold: false,
+					italic: false
+				},
+				legend: {
+					position: 'in'
+				},
+				explorer: {
+					axis: 'horizontal',
+					keepInBounds: true,
+					maxZoomIn: 0.05,
+					maxZoomOut: 2,
+					zoomDelta: 1.2
+				},
+				axisTitlesPosition: 'in',
+				vAxis: {
+					minorGridlines: {
+						color: 'transparent'
+					},
+					textPosition: 'in',
+				},
+				hAxis: {
+					title: 'Time (scroll to zoom)',
+					textPosition: 'in',
+					gridlines: {
+						color: 'transparent',
+						units: {
+							years: {format: ["yyyy"]},
+							months: {format: ["MMM yyyy"]},
+							days: {format: ["MMM d"]}
+						}
+					}
+				}
+			};
+
+			// Instantiate and draw our chart, passing in some options.
+			var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+			chart.draw(data, options);
+		}
+	</script>
+	</head>
+
+	<body>
+		<!-- Div that will hold the chart -->
+		<div id="curve_chart" style="width: 100%; height: 100%"></div>
+	</body>
+</html>
