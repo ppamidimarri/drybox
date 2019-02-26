@@ -15,3 +15,6 @@ I use the following hardware for this project:
 
 ## Instructions 
 To be completed
+
+## Pictures
+https://imgur.com/a/YLTD9bh
