@@ -13,6 +13,17 @@ I use the following hardware for this project:
 * 20x4 I2C LCD module
 * WS2812B LED strip with its own 5V power supply
 
+## Software Used
+* Raspbian Stretch Lite
+* nginx web server
+* PHP for the website
+* MariaDB for the database
+* Google Charts for interactive charts
+* FastLED.io library to control LEDs
+* Adafruit DHT library
+* I2C LCD Driver by Denis Pleic
+* Serial communication demo by user robin2 at http://forum.arduino.cc/index.php?topic=225329
+
 ## Instructions 
 To be completed
 
