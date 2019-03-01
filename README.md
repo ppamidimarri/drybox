@@ -12,6 +12,7 @@ I use the following hardware for this project:
 * DHT22 sensors
 * 20x4 I2C LCD module
 * WS2812B LED strip with its own 5V power supply
+* 
 
 ## Software Used
 * Raspbian Stretch Lite
@@ -23,6 +24,9 @@ I use the following hardware for this project:
 * Adafruit DHT library
 * I2C LCD Driver by Denis Pleic
 * Serial communication demo by user robin2 at http://forum.arduino.cc/index.php?topic=225329
+
+## 3D printed parts
+https://www.thingiverse.com/thing:3456908
 
 ## Instructions 
 To be completed
