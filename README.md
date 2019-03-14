@@ -70,17 +70,17 @@ https://www.thingiverse.com/thing:3456908
 );`
 
 **Configure php-fpm**
-1. `sudo nano /etc/php/7.0/fpm/php.ini`, change `#cgi.fix_pathinfo=1` to `cgi.fix_pathinfo=0`
+`sudo nano /etc/php/7.0/fpm/php.ini`, change `#cgi.fix_pathinfo=1` to `cgi.fix_pathinfo=0`
 
 **Configure nginx**
 `sudo nano /etc/nginx/sites-available/default`, edit these lines to look like:
 
-      `index index.html index.htm index.php index.nginx-debian.html;`
-      `location ~ \.php$ {`
-      `   include snippets/fastcgi-php.conf;`
-      `   # With php-fpm (or other unix sockets):`
-      `   fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;`
-      `}`
+      `index index.html index.htm index.php index.nginx-debian.html;
+      location ~ \.php$ {
+         include snippets/fastcgi-php.conf;
+         # With php-fpm (or other unix sockets):
+         fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
+      }`
 
 ## Pictures
 [Screenshots](https://imgur.com/a/YLTD9bh)
