@@ -12,7 +12,6 @@ I use the following hardware for this project:
 * DHT22 sensors
 * 20x4 I2C LCD module
 * WS2812B LED strip with its own 5V power supply
-* 
 
 ## Software Used
 * Raspbian Stretch Lite
@@ -35,6 +34,8 @@ https://www.thingiverse.com/thing:3456908
 2. [Set up image for SSH and WiFi](https://www.raspberrypi.org/forums/viewtopic.php?t=191252). 
 3. Insert the Micro SD card into a Pi and boot it up. 
 4. Establish SSH connection.
+5. Change password, locale, timezone, etc. using `sudo raspi-config`
+6. Enable I2C using `sudo raspi-config` and `sudo reboot`
 
 **Update packages** 
 
@@ -70,9 +71,11 @@ https://www.thingiverse.com/thing:3456908
 );`
 
 **Configure php-fpm**
+
 `sudo nano /etc/php/7.0/fpm/php.ini`, change `#cgi.fix_pathinfo=1` to `cgi.fix_pathinfo=0`
 
 **Configure nginx**
+
 `sudo nano /etc/nginx/sites-available/default`, edit these lines to look like:
 
       index index.html index.htm index.php index.nginx-debian.html;
@@ -81,6 +84,42 @@ https://www.thingiverse.com/thing:3456908
          # With php-fpm (or other unix sockets):
          fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
       }
+
+**Download and set up the scripts**
+1. Download the code from this repository using `wget` or `git clone`
+2. Create folder drybox: `mkdir /home/pi/drybox`
+3. Copy the python files into this new folder
+4. Copy the `sketch_drybox_v4` folder into `/home/pi/drybox`
+5. Copy the contents of the html folder to `/var/www/html`
+
+**Connect everything up**
+1. Setup the dryboxes with DHT22 sensors inside them.
+2. Connect the DHT22 sensors to the Pi over GPIO pins. 
+5. Connect the LCD to the Pi using I2C pins.
+3. Connect the Arduino Nano to the Pi over a GPIO pin.
+4. Connect the LED strip to the Arduino Nano over Pin 2.
+
+TODO: add diagram
+
+**Load Arduino sketch to control LEDs**
+1. Establish a GUI session with the Pi, either using Putty and Xming, or using an HDMI monitor plus USB keyboard and mouse
+2. Start the Arduino IDE: `arduino`
+3. Load the sketch called `sketch_drybox_v4.ino`
+4. Compile and upload sketch to the Arduino Nano
+
+**Test that things are working**
+1. Run the sensor script with `python /home/pi/drybox/sensor.py`
+2. The LCD should light up and within a minute or so, display the readings 
+3. Login to the database with the `mysql` command above and check for recorded data: `select * from drybox.results;`
+4. From your computer or phone browser, try the IP address of your Pi, it should show you the website like in the screenshots
+5. Press Ctrl-C to kill the python script; the LCD should turn off
+
+**[Install](https://www.raspberrypi.org/documentation/linux/usage/systemd.md) the service**
+1. Copy the `dhtlogger.service` file: `sudo cp /home/pi/drybox/dhtlogger.service /etc/systemd/system/dhtlogger.service` 
+2. Attempt to start the service: `sudo systemctl start dhtlogger.service`
+3. Check that there are no errors, and check steps 2-4 from the "Test that things are working" section above
+4. If everything is good, enable the service: `sudo systemctl enable dhtlogger.service`
+5. Reboot the Pi with `sudo reboot` and check that it starts and check steps 2-4 from the "Test that things are working" section again
 
 ## Pictures
 [Screenshots](https://imgur.com/a/YLTD9bh)
