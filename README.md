@@ -9,7 +9,7 @@ These scripts allow you to monitor the temperature and humidity in a set of dryb
 I use the following hardware for this project:
 * One [Snapware Airtight 40-cup Rectangular Food Storage Container](https://smile.amazon.com/gp/product/B007V4IWIU) per drybox
 * One [DHT22 sensor](https://smile.amazon.com/gp/product/B01N9BA0O4) per drybox 
-* One [Dehumidifiers for each drybox](https://smile.amazon.com/gp/product/B000H0XFCS) per drybox
+* One [ehumidifier](https://smile.amazon.com/gp/product/B000H0XFCS) per drybox
 * [Raspberry Pi 3B+](https://smile.amazon.com/gp/product/B07BDR5PDW)
 * [20x4 I2C LCD module](https://smile.amazon.com/gp/product/B01GPUMP9C)
 * [WS2812b LED strip](https://smile.amazon.com/gp/product/B01LSF4Q0A)
