@@ -99,7 +99,7 @@ https://www.thingiverse.com/thing:3456908
 3. Connect the Arduino Nano to the Pi over a GPIO pin.
 4. Connect the LED strip to the Arduino Nano over Pin 2.
 
-TODO: add diagram
+![Wiring Diagram](https://i.imgur.com/aFF4lY5.png)
 
 **Load Arduino sketch to control LEDs**
 1. Establish a GUI session with the Pi, either using Putty and Xming, or using an HDMI monitor plus USB keyboard and mouse
