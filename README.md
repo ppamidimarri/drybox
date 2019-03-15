@@ -121,5 +121,8 @@ https://www.thingiverse.com/thing:3456908
 4. If everything is good, enable the service: `sudo systemctl enable dhtlogger.service`
 5. Reboot the Pi with `sudo reboot` and check that it starts and check steps 2-4 from the "Test that things are working" section again
 
-## Pictures
-[Screenshots](https://imgur.com/a/YLTD9bh)
+## [Pictures](https://imgur.com/a/YLTD9bh)
+![Full setup](https://i.imgur.com/tljvpbC.jpg)
+![Close-up of drybox](https://i.imgur.com/IOEDjfQ.jpg)
+![Close-up of LCD](https://i.imgur.com/CsuUP5K.jpg)
+![Website with charts](https://i.imgur.com/YcEIfC0.png)
