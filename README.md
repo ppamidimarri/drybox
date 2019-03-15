@@ -9,11 +9,15 @@ These scripts allow you to monitor the temperature and humidity in a set of dryb
 I use the following hardware for this project:
 * One [Snapware Airtight 40-cup Rectangular Food Storage Container](https://smile.amazon.com/gp/product/B007V4IWIU) per drybox
 * One [DHT22 sensor](https://smile.amazon.com/gp/product/B01N9BA0O4) per drybox 
-* One [ehumidifier](https://smile.amazon.com/gp/product/B000H0XFCS) per drybox
+* One [dehumidifier](https://smile.amazon.com/gp/product/B000H0XFCS) per drybox
 * [Raspberry Pi 3B+](https://smile.amazon.com/gp/product/B07BDR5PDW)
 * [20x4 I2C LCD module](https://smile.amazon.com/gp/product/B01GPUMP9C)
 * [WS2812b LED strip](https://smile.amazon.com/gp/product/B01LSF4Q0A)
 * [Arduino Nano](https://smile.amazon.com/gp/product/B0713XK923)
+* 5V power supply with enough current to power the LED strip
+* 5V, 2A (or more) Micro-USB power supply for the Pi
+* USB to Mini-USB cable (to connect the Pi with the Arduino)
+* Wires and Dupont connectors to connect everything up
 
 ## Software Used
 * Raspbian Stretch Lite
@@ -114,6 +118,7 @@ I use the following hardware for this project:
 2. The LCD should light up and within a minute or so, display the readings 
 3. Login to the database with the `mysql` command above and check for recorded data: `select * from drybox.results;`
 4. From your computer or phone browser, try the IP address of your Pi, it should show you the website like in the screenshots
+5. The script will turn the LEDs above a drybox to red if the humidity reading from that DHT22 sensor is higher than a threshold. Based on your layout, you will need to specify which LEDs correspond to which drybox. You can do this in `sensor.py` by updating `HIGH_HUMIDITY`, `fil_starts` and `fil_ends`
 5. Press Ctrl-C to kill the python script; the LCD should turn off
 
 **[Install](https://www.raspberrypi.org/documentation/linux/usage/systemd.md) the service**
