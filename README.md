@@ -94,10 +94,10 @@ I use the following hardware for this project:
 
 **Connect everything up**
 1. Setup the dryboxes with DHT22 sensors inside them.
-2. Connect the DHT22 sensors to the Pi over GPIO pins. 
+2. Connect the DHT22 sensors to the Pi over GPIO pins. If you use different pins from what is shown in the picture below, edit `sensor.py` to update the pin numbers
 5. Connect the LCD to the Pi using I2C pins.
-3. Connect the Arduino Nano to the Pi over a GPIO pin.
-4. Connect the LED strip to the Arduino Nano over Pin 2.
+3. Connect the Arduino Nano to the Pi using a USB-to-Mini-USB cable.
+4. Connect the LED strip to the Arduino Nano over Pin 2. If you use a different pin, you need to update the sketch_drybox_v4.ino file with the number of the pin you are using
 
 ![Wiring Diagram](https://i.imgur.com/aFF4lY5.png)
 
