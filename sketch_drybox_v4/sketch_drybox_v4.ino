@@ -103,6 +103,13 @@ void processData() {
     dataToPC();
 
     // Populate LED colors
+
+    // The serial message consists of the following byte sequence, total 28 bytes for 5 dryboxes
+    // First three bytes: Default GRB color (for LEDs that are not above a particular drybox,
+    //          or above a drybox whose humidity is not "high")
+    // Five bytes for each drybox:
+    //          Begin and end index of LEDs above that drybox, followed by GRB color for it
+
     // Clear memory of LED colors
     memset(leds, 0, NUM_LEDS * sizeof(struct CRGB));
     // Interpret input data byte-by-byte
