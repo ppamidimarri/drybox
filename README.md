@@ -1,4 +1,4 @@
-# drybox
+# Drybox
 These scripts allow you to monitor the temperature and humidity in a set of dryboxes. This code allows you to monitor your dryboxes in a number of ways: 
 * logs the readings to a database
 * serve a website showing the readings in charts
