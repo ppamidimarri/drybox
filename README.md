@@ -14,20 +14,20 @@ I use the following hardware for this project:
 * [20x4 I2C LCD module](https://smile.amazon.com/gp/product/B01GPUMP9C)
 * [WS2812b LED strip](https://smile.amazon.com/gp/product/B01LSF4Q0A)
 * [Arduino Nano](https://smile.amazon.com/gp/product/B0713XK923)
-* 5V power supply with enough current to power the LED strip
-* 5V, 2A (or more) Micro-USB power supply for the Pi
+* [5V power supply](https://smile.amazon.com/gp/product/B078RT3ZPS) with enough current to power the LED strip
+* 5V, 2A (or more) [Micro-USB power supply for the Pi](https://smile.amazon.com/gp/product/B075XMTQJC)
 * USB to Mini-USB cable (to connect the Pi with the Arduino)
 * Wires and Dupont connectors to connect everything up
 
 ## Software Used
-* Raspbian Stretch Lite
-* nginx web server
-* PHP for the website
-* MariaDB for the database
-* Google Charts for interactive charts
-* FastLED.io library to control LEDs
-* Adafruit DHT library
-* I2C LCD Driver by Denis Pleic
+* [Raspbian Stretch Lite](https://downloads.raspberrypi.org/raspbian_lite_latest)
+* [nginx web server](https://www.nginx.com/resources/wiki/)
+* [PHP](http://www.php.net/) for the website
+* [MariaDB](https://mariadb.org/) for the database
+* [Google Charts](https://developers.google.com/chart/) for interactive charts
+* [FastLED.io](http://fastled.io/) library to control LEDs
+* [Adafruit DHT](https://github.com/adafruit/DHT-sensor-library) library
+* [I2C LCD Driver](https://github.com/emcniece/rpi-lcd/blob/master/RPi_I2C_driver.py) by Denis Pleic
 * [Serial communication demo](http://forum.arduino.cc/index.php?topic=225329) by user robin2 at Arduino Forums
 
 ## 3D printed parts
