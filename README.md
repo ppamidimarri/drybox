@@ -25,7 +25,7 @@ I use the following hardware for this project:
 * [Serial communication demo](http://forum.arduino.cc/index.php?topic=225329) by user robin2 at Arduino Forums
 
 ## 3D printed parts
-https://www.thingiverse.com/thing:3456908
+[Thingiverse listing with STL files and printing instructions](https://www.thingiverse.com/thing:3456908)
 
 ## Instructions 
 **Load a Pi with Raspbian Stretch Lite and get SSH going**
