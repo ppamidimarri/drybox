@@ -1,9 +1,11 @@
 #!/usr/bin/env python
-#--------------------------------------
-# Show on a 20x4 LCD humidity and
-# temperature readings obtained from a
-# set of DHT22 sensors
-#--------------------------------------
+#---------------------------------------------------------------------
+# Read humidity and temperature readings from a set of DHT22 sensors
+# Display readings on a 20x4 I2C LCD screen
+# Log the readings to a database
+# Send information to an Arudino Nano on colors for an WS2812B LED 
+# 	strip based on humidity readings obtained
+#---------------------------------------------------------------------
 
 # Imports
 import i2c_lcd_driver
@@ -66,9 +68,8 @@ def main():
 		time.sleep(600)
 
 def log_high_humidity(humi, temp):
-	now = datetime.now()
-	today = now.strftime("%Y-%m-%d")
-	timeofday = now.strftime("%H:%M:%S")
+	sql_command = "insert into readings (humidity_1, temperature_1, humidity_2, temperature_2, humidity_3, temperature_3, "
+	sql_command += "humidity_4, temperature_4, humidity_5, temperature_5) values (";
 	for i in range(5):
 		h = None
 		t = None
@@ -80,14 +81,18 @@ def log_high_humidity(humi, temp):
 			t = "NULL"
 		else:
 			t = fahrenheit(temp[i])
-		sql_command = "insert into readings (stamp_date, stamp_time, sensor, temperature, humidity) values("
-		sql_command += "'{0}', '{1}', {2:0d}, {3}, {4})".format(today, timeofday, i+1, t, h)
-		try:
-			db_cursor.execute(sql_command)
-			db.commit();
-		except:
-			print("ERROR executing SQL: " + sql_command)
-			db.rollback()
+		sql_command += "{0}, {1}".format(h, t)
+		if i == 4:
+			sql_command += ")"
+		else:
+			sql_command += ", "
+
+	try:
+		db_cursor.execute(sql_command)
+		db.commit();
+	except:
+		print("ERROR executing SQL: " + sql_command)
+		db.rollback()
 	return True
 
 def make_default_color():
@@ -100,6 +105,11 @@ def make_filament_color(humidity):
 		return baseColor
 
 def make_serial_message(humi):
+	# The serial message consists of the following byte sequence, total 28 bytes for 5 dryboxes
+	# First three bytes: Default GRB color (for LEDs that are not above a particular drybox,
+	#       or above a drybox whose humidity is not "high")
+	# Five bytes for each drybox:
+	#       Begin and end index of LEDs above that drybox, followed by GRB color for it
 	data = ""
 	data += make_default_color()
 	for i in range(5):
