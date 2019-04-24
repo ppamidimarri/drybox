@@ -60,7 +60,8 @@ I use the following hardware for this project:
 4. `create user 'sensor'@'localhost' IDENTIFIED BY 'sensorpass'`;
 5. `grant all privileges on drybox.* to 'sensor'@'localhost';`
 6. Exit from mysql and now login as the user "sensor": `mysql -u sensor -p`
-7. `CREATE TABLE readings (
+7. `use drybox;`
+8. `CREATE TABLE readings (
   id int(11) NOT NULL AUTO_INCREMENT,
   stamp timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   humidity_1 float DEFAULT NULL,
