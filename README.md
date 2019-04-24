@@ -50,16 +50,16 @@ I use the following hardware for this project:
 
 **Install new packages needed**
 
-1. `sudo apt install python-dev python-pip mariadb-server python-mysqldb nginx php-fpm php-mbstring php-mysql raspberry-ui-mods arduino`
+1. `sudo apt install python-dev python-pip mariadb-server python-mysqldb nginx php-fpm php-mbstring php-mysql raspberry-ui-mods smbus arduino`
 2. `sudo pip install Adafruit_DHT pyserial`
 
 **Set up the database**
 1. Secure the database: `sudo mysql_secure_installation`
-2. `mysql -u root -p`
+2. `sudo mysql -u root -p`
 3. `create database drybox;`
 4. `create user 'sensor'@'localhost' IDENTIFIED BY 'sensorpass'`;
 5. `grant all privileges on drybox.* to 'sensor'@'localhost';`
-6. `mysql -u sensor -p`
+6. Exit from mysql and now login as the user "sensor": `mysql -u sensor -p`
 7. `CREATE TABLE readings (
   id int(11) NOT NULL AUTO_INCREMENT,
   stamp timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
