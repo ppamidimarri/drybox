@@ -3,7 +3,7 @@
 try {
 	// Try Connect to the DB with new MySqli object - Params {hostname, userid, password, dbname}
 	$mysqli = new mysqli("localhost", "sensor", "sensorpass", "drybox");
-	$statement = $mysqli->prepare("select year(stamp), month(stamp), day(stamp), hour(stamp), minute(stamp), second(stamp), humidity_1, humidity_2, humidity_3, humidity_4, humidity_5 from results");
+	$statement = $mysqli->prepare("select year(stamp), month(stamp), day(stamp), hour(stamp), minute(stamp), second(stamp), humidity_1, humidity_2, humidity_3, humidity_4, humidity_5 from readings");
 	$statement->execute(); // Execute the statement.
 	$sql_result = $statement->get_result(); // Binds the last executed statement as a result.
 	$cols = array(
